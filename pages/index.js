@@ -56,7 +56,14 @@ export default function Home() {
       return;
     }
     window.action(PDFURL);
-    resizer();
+    while (true) {
+      await new Promise((resolve, reject) => setTimeout(resolve, 100));
+      if (!document.querySelector('.page')) {
+        continue;
+      }
+      resizer();
+      break;
+    }
   }
 
   useEffect(() => {
