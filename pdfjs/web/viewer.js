@@ -20,6 +20,7 @@
  * JavaScript code in this page
  */
 
+
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ([
@@ -1715,12 +1716,14 @@
             return;
           }
           this.pdfViewer.decreaseScale(steps);
+
         },
         zoomReset() {
           if (this.pdfViewer.isInPresentationMode) {
             return;
           }
           this.pdfViewer.currentScaleValue = _ui_utils.DEFAULT_SCALE_VALUE;
+
         },
         get pagesCount() {
           return this.pdfDocument ? this.pdfDocument.numPages : 0;

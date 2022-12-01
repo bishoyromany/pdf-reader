@@ -403,9 +403,10 @@ See https://github.com/adobe-type-tools/cmap-resources
                     </div>
                 </div>
             </div>
-
-            <div id="viewerContainer" tabindex="0">
-                <div id="viewer" class="pdfViewer"></div>
+            <div id="scrollContainer">
+                <div id="viewerContainer" tabindex="0">
+                    <div id="viewer" class="pdfViewer"></div>
+                </div>
             </div>
         </div> <!-- mainContainer -->
 
@@ -511,8 +512,8 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     <input type="file" id="fileInput" class="hidden">
 
-    <!-- <div style="z-index: 1000; background-color: rgba(255, 255, 255, 0.425); position: fixed; top: 0px; left: 0px; width: 100vw; height: 100vh;"
-        id="zoom"></div> -->
+    <div style="z-index: 1000; background-color: rgba(255, 255, 255, 0.425); position: absolute; top: 0px; left: 0px; width: 100vw; height: 100vh;"
+        id="zoom"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -534,15 +535,28 @@ See https://github.com/adobe-type-tools/cmap-resources
                     //alert(dist);
                     if (dist1 > dist2) {//if fingers are closer now than when they first touched screen, they are pinching
                         document.getElementById('zoomOut').click();
+                        updateSizes();
                     }
                     if (dist1 < dist2) {//if fingers are further apart than when they first touched the screen, they are making the zoomin gesture
                         document.getElementById('zoomIn').click();
+                        updateSizes();
                     }
                 }
-
             }
-            document.getElementById('viewer').addEventListener('touchstart', start, false);
-            document.getElementById('viewer').addEventListener('touchmove', move, false);
+
+
+            const updateSizes = () => {
+                const width = document.querySelector('.page').scrollWidth > window.innerWidth ? document.querySelector('.page').scrollWidth + "px" : "100vw";
+                document.getElementById('zoom').style.height = document.getElementById('viewer').scrollHeight + "px"
+                document.getElementById('zoom').style.width = width
+                document.getElementById('viewerContainer').style.height = document.getElementById('viewer').scrollHeight + "px"
+                document.getElementById('viewerContainer').style.width = width
+            }
+
+            setInterval(updateSizes, 100)
+
+            document.getElementById('zoom').addEventListener('touchstart', start, false);
+            document.getElementById('zoom').addEventListener('touchmove', move, false);
         }, false);
     </script>
 </body>
