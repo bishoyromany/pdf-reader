@@ -743,7 +743,7 @@
       };
       {
         defaultOptions.defaultUrl = {
-          value: window.location.search.replace('?url=', '').length > 10 ? "https://be-pdf-reader.vercel.app/api/pdf" + window.location.search : "./pdfjs/web/compressed.tracemonkey-pldi-09.pdf",
+          value: "https://be-pdf-reader.vercel.app/api/pdf" + window.location.search,
           kind: OptionKind.VIEWER
         };
         defaultOptions.disablePreferences = {
