@@ -743,7 +743,7 @@
       };
       {
         defaultOptions.defaultUrl = {
-          value: window.location.href.split('?')[1]?.split('=')[1] || "./pdfjs/web/compressed.tracemonkey-pldi-09.pdf",
+          value: window.location.search.replace('?url=', '').length > 10 ? window.location.search.replace('?url=', '') : "./pdfjs/web/compressed.tracemonkey-pldi-09.pdf",
           kind: OptionKind.VIEWER
         };
         defaultOptions.disablePreferences = {
