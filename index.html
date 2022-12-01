@@ -516,7 +516,7 @@ See https://github.com/adobe-type-tools/cmap-resources
         id="zoom"></div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', async function () {
             var dist1 = 0;
             function start(ev) {
                 if (ev.targetTouches.length == 2) {//check if two fingers touched screen
@@ -553,7 +553,15 @@ See https://github.com/adobe-type-tools/cmap-resources
                 document.getElementById('viewerContainer').style.width = width
             }
 
-            setInterval(updateSizes, 100)
+            while (true) {
+                await new Promise((resolve, reject) => setTimeout(resolve, 100));
+
+                if (!document.querySelector('.page')) {
+                    continue;
+                }
+                updateSizes();
+                break;
+            }
 
             document.getElementById('zoom').addEventListener('touchstart', start, false);
             document.getElementById('zoom').addEventListener('touchmove', move, false);
