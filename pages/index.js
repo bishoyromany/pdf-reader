@@ -55,12 +55,13 @@ export default function Home() {
       alert("PDF Not Found");
       return;
     }
+    window.action(PDFURL);
+    resizer();
   }
 
   useEffect(() => {
     if (window) {
       init();
-      resizer();
     }
 
   }, []);
