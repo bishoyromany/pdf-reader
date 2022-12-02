@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lt": "lt --port 3000 --subdomain qe-pdf"
   },
   "dependencies": {
     "axios": "^1.2.0",
