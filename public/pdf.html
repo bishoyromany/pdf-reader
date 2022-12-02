@@ -511,61 +511,61 @@ See https://github.com/adobe-type-tools/cmap-resources
     <div id="printContainer"></div>
 
     <input type="file" id="fileInput" class="hidden">
-
+    <!-- 
     <div style="z-index: 1000; background-color: transparent; position: absolute; top: 0px; left: 0px; width: 100vw; height: 100vh;"
-        id="zoom"></div>
+        id="zoom"></div> -->
 
     <script>
-        document.addEventListener('DOMContentLoaded', async function () {
-            var dist1 = 0;
-            function start(ev) {
-                if (ev.targetTouches.length == 2) {//check if two fingers touched screen
-                    dist1 = Math.hypot( //get rough estimate of distance between two fingers
-                        ev.touches[0].pageX - ev.touches[1].pageX,
-                        ev.touches[0].pageY - ev.touches[1].pageY);
-                }
+        // document.addEventListener('DOMContentLoaded', async function () {
+        //     var dist1 = 0;
+        //     function start(ev) {
+        //         if (ev.targetTouches.length == 2) {//check if two fingers touched screen
+        //             dist1 = Math.hypot( //get rough estimate of distance between two fingers
+        //                 ev.touches[0].pageX - ev.touches[1].pageX,
+        //                 ev.touches[0].pageY - ev.touches[1].pageY);
+        //         }
 
-            }
-            function move(ev) {
-                if (ev.targetTouches.length == 2 && ev.changedTouches.length == 2) {
-                    // Check if the two target touches are the same ones that started
-                    var dist2 = Math.hypot(//get rough estimate of new distance between fingers
-                        ev.touches[0].pageX - ev.touches[1].pageX,
-                        ev.touches[0].pageY - ev.touches[1].pageY);
-                    //alert(dist);
-                    if (dist1 > dist2) {//if fingers are closer now than when they first touched screen, they are pinching
-                        document.getElementById('zoomOut').click();
-                        updateSizes();
-                    }
-                    if (dist1 < dist2) {//if fingers are further apart than when they first touched the screen, they are making the zoomin gesture
-                        document.getElementById('zoomIn').click();
-                        updateSizes();
-                    }
-                }
-            }
+        //     }
+        //     function move(ev) {
+        //         if (ev.targetTouches.length == 2 && ev.changedTouches.length == 2) {
+        //             // Check if the two target touches are the same ones that started
+        //             var dist2 = Math.hypot(//get rough estimate of new distance between fingers
+        //                 ev.touches[0].pageX - ev.touches[1].pageX,
+        //                 ev.touches[0].pageY - ev.touches[1].pageY);
+        //             //alert(dist);
+        //             if (dist1 > dist2) {//if fingers are closer now than when they first touched screen, they are pinching
+        //                 document.getElementById('zoomOut').click();
+        //                 updateSizes();
+        //             }
+        //             if (dist1 < dist2) {//if fingers are further apart than when they first touched the screen, they are making the zoomin gesture
+        //                 document.getElementById('zoomIn').click();
+        //                 updateSizes();
+        //             }
+        //         }
+        //     }
 
 
-            const updateSizes = () => {
-                const width = document.querySelector('.page').scrollWidth > window.innerWidth ? document.querySelector('.page').scrollWidth + "px" : "100vw";
-                document.getElementById('zoom').style.height = document.getElementById('viewer').scrollHeight + "px"
-                document.getElementById('zoom').style.width = width
-                document.getElementById('viewerContainer').style.height = document.getElementById('viewer').scrollHeight + "px"
-                document.getElementById('viewerContainer').style.width = width
-            }
+        //     const updateSizes = () => {
+        //         const width = document.querySelector('.page').scrollWidth > window.innerWidth ? document.querySelector('.page').scrollWidth + "px" : "100vw";
+        //         document.getElementById('zoom').style.height = document.getElementById('viewer').scrollHeight + "px"
+        //         document.getElementById('zoom').style.width = width
+        //         document.getElementById('viewerContainer').style.height = document.getElementById('viewer').scrollHeight + "px"
+        //         document.getElementById('viewerContainer').style.width = width
+        //     }
 
-            while (true) {
-                await new Promise((resolve, reject) => setTimeout(resolve, 100));
+        //     while (true) {
+        //         await new Promise((resolve, reject) => setTimeout(resolve, 100));
 
-                if (!document.querySelector('.page')) {
-                    continue;
-                }
-                updateSizes();
-                break;
-            }
+        //         if (!document.querySelector('.page')) {
+        //             continue;
+        //         }
+        //         updateSizes();
+        //         break;
+        //     }
 
-            document.getElementById('zoom').addEventListener('touchstart', start, false);
-            document.getElementById('zoom').addEventListener('touchmove', move, false);
-        }, false);
+        //     document.getElementById('zoom').addEventListener('touchstart', start, false);
+        //     document.getElementById('zoom').addEventListener('touchmove', move, false);
+        // }, false);
     </script>
 </body>
 
