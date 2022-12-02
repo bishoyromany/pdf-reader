@@ -33,7 +33,7 @@
 
   function handlePages(page) {
     //This gives us the page's dimensions at full scale
-    var viewport = page.getViewport({ scale: 2 });
+    var viewport = page.getViewport({ scale: 1 });
 
     //We'll create a canvas for each page to draw it on
     var canvas = document.createElement("canvas");
