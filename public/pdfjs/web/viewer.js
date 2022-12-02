@@ -21,8 +21,7 @@
  */
 
 
-
-window.action = (PDFURL) => { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
@@ -744,7 +743,7 @@ window.action = (PDFURL) => { // webpackBootstrap
       };
       {
         defaultOptions.defaultUrl = {
-          value: PDFURL,
+          value: window.location.search.replace('?url=', '').length > 10 ? "https://be-pdf-reader.vercel.app/api/pdf" + window.location.search : "./pdfjs/web/compressed.tracemonkey-pldi-09.pdf",
           kind: OptionKind.VIEWER
         };
         defaultOptions.disablePreferences = {
@@ -13662,5 +13661,6 @@ window.action = (PDFURL) => { // webpackBootstrap
   })();
 
   /******/
-};
+})()
+  ;
 //# sourceMappingURL=viewer.js.map
